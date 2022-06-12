@@ -1,0 +1,14 @@
+{
+  "todos": [
+    {
+      "id": 1,
+      "task": "Finish Frontend Mentor",
+      "isCompleted": false
+    },
+    {
+      "id": 2,
+      "task": "Get some rest",
+      "isCompleted": false
+    }
+  ]
+}
