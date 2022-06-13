@@ -10,5 +10,8 @@
       "task": "Get some rest",
       "isCompleted": false
     }
-  ]
+  ],
+  "theme": {
+    "mode": "light"
+  }
 }
