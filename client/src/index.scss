@@ -13,14 +13,20 @@ $clr-very-dark-grayish-blue-3: hsl(237, 14%, 26%);
 
 [data-theme="light"] {
   --bg-img: url(./images/bg-desktop-light.jpg);
-  --bg-color: hsl(0, 0%, 98%);
+  --bg-clr: hsl(236, 33%, 92%);
   --theme-img: url(./images/icon-sun.svg);
+  --bar-clr: hsl(0, 0%, 98%);
+  --check-border-clr: hsl(234, 39%, 85%);
+  --text-clr: hsl(235, 21%, 11%);
 }
 
 [data-theme="dark"] {
   --bg-img: url(./images/bg-desktop-dark.jpg);
-  --bg-color: hsl(235, 21%, 11%);
+  --bg-clr: hsl(235, 21%, 11%);
   --theme-img: url(./images/icon-moon.svg);
+  --bar-clr: hsl(235, 24%, 19%);
+  --check-border-clr: hsl(234, 11%, 52%);
+  --text-clr: hsl(0, 0%, 98%);
 }
 
 :root {
@@ -28,8 +34,11 @@ $clr-very-dark-grayish-blue-3: hsl(237, 14%, 26%);
   --font-weight-bold: 700;
   --font-weight-light: 400;
   --clr-primary: hsl(220, 98%, 61%);
-  --bg-check: linear-gradient(hsl(192, 100%, 67%), hsl(280, 87%, 65%));
-  --bar-height: 10rem;
+  --check-border-clr-hover: linear-gradient(
+    hsl(192, 100%, 67%),
+    hsl(280, 87%, 65%)
+  );
+  --bar-height: 8rem;
 }
 
 *,
@@ -52,5 +61,10 @@ body {
   width: 100%;
   height: 100%;
   font-size: var(--default-font-size);
-  background-color: var(--bg-color);
+  background-color: var(--bg-clr);
+}
+
+::selection {
+  color: var(--bg-clr);
+  background-color: var(--clr-primary);
 }
