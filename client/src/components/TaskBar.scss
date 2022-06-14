@@ -1,0 +1,12 @@
+.taskbar {
+  // display: flex;
+  // justify-content: space-between;
+  // align-items: center;
+  height: var(--bar-height);
+  overflow: hidden;
+
+  &__content {
+    background-color: orange;
+    padding: 1rem 2rem;
+  }
+}

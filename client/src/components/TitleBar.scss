@@ -1,0 +1,36 @@
+.titlebar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: var(--bar-height);
+
+  & > * {
+    height: 50%;
+    width: 25rem;
+    margin: auto 0;
+  }
+
+  &__title {
+    display: inline-block;
+    margin: 0;
+    letter-spacing: 1rem;
+    font-size: 6.4rem;
+    color: white;
+  }
+
+  &__toggle {
+    text-align: right;
+    height: auto;
+  }
+
+  &__icon {
+    display: inline-block;
+    height: 3rem;
+    width: 3rem;
+    background-image: var(--theme-img);
+    background-repeat: no-repeat;
+    background-size: contain;
+
+    cursor: pointer;
+  }
+}
