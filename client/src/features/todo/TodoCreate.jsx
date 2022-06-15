@@ -4,7 +4,7 @@ import TaskBar from "../../components/TaskBar"
 
 const TodoCreate = () => {
   return (
-    <TaskBar>
+    <TaskBar isCompleted={false}>
       <input
         type="text"
         className="taskbar__input"

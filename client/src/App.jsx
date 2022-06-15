@@ -24,6 +24,9 @@ function App() {
         <TitleBar />
         <TodoCreate />
         <TodoList />
+        <div className="App__reminder">
+          <p className="App__reminder-text">Drag and drop to reorder list</p>
+        </div>
       </div>
     </div>
   )

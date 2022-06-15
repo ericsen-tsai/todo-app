@@ -15,8 +15,8 @@
 
   &__check {
     display: inline-block;
-    width: 3rem;
-    height: 3rem;
+    width: 2.4rem;
+    height: 2.4rem;
     border: 2px solid var(--check-border-clr);
     border-radius: 50%;
     position: relative;
@@ -38,16 +38,16 @@
     }
 
     &::after {
-      width: 3.3rem;
-      height: 3.3rem;
+      width: 2.6rem;
+      height: 2.6rem;
       top: 50%;
       left: 50%;
       background: var(--check-border-clr-hover) border-box;
     }
 
     &::before {
-      width: 1.8rem;
-      height: 1.8rem;
+      width: 1.6rem;
+      height: 1.6rem;
       z-index: 10;
       top: 55%;
       left: 50%;

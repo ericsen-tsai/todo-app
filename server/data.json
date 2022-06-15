@@ -24,11 +24,6 @@
       "task": "Chatting",
       "isCompleted": true,
       "id": 5
-    },
-    {
-      "task": "Learning React",
-      "isCompleted": false,
-      "id": 6
     }
   ],
   "theme": {

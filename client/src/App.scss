@@ -20,4 +20,14 @@
     flex-direction: column;
     gap: 3rem;
   }
+
+  &__reminder {
+    margin: 0 auto;
+    padding-bottom: 3rem;
+  }
+
+  &__reminder-text {
+    font-size: 1.4rem;
+    color: var(--text-clr-light-2);
+  }
 }
