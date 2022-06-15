@@ -9,6 +9,26 @@
       "id": 2,
       "task": "Get some rest",
       "isCompleted": false
+    },
+    {
+      "task": "Exercising",
+      "isCompleted": true,
+      "id": 3
+    },
+    {
+      "task": "Reading",
+      "isCompleted": true,
+      "id": 4
+    },
+    {
+      "task": "Chatting",
+      "isCompleted": true,
+      "id": 5
+    },
+    {
+      "task": "Learning React",
+      "isCompleted": false,
+      "id": 6
     }
   ],
   "theme": {

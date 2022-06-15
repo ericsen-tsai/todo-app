@@ -5,7 +5,8 @@ import { fetchTodos } from "./features/todo/todoService"
 import { fetchTheme } from "./features/theme/themeService"
 
 import TitleBar from "./components/TitleBar"
-import TaskBar from "./components/TaskBar"
+import TodoCreate from "./features/todo/TodoCreate"
+import TodoList from "./features/todo/TodoList"
 
 import "./App.scss"
 
@@ -21,7 +22,8 @@ function App() {
     <div className="App">
       <div className="App__content">
         <TitleBar />
-        <TaskBar />
+        <TodoCreate />
+        <TodoList />
       </div>
     </div>
   )

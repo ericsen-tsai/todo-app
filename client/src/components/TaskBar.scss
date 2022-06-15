@@ -71,7 +71,38 @@
     outline: none;
     font-family: inherit;
     font-size: var(--default-font-size);
-    font-weight: var(--font-weight-bold);
+    font-weight: var(--font-weight-light);
     color: var(--text-clr);
+  }
+
+  &__flex {
+    flex: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__description {
+    font-size: var(--default-font-size);
+    font-weight: var(--font-weight-light);
+    color: var(--text-clr);
+    cursor: pointer;
+
+    &--completed {
+      color: var(--text-clr-light);
+      text-decoration: line-through;
+      cursor: default;
+    }
+  }
+
+  &__delete {
+    opacity: 0;
+    height: 2rem;
+    width: 2rem;
+    cursor: pointer;
+  }
+
+  &__flex:hover &__delete {
+    opacity: 1;
   }
 }

@@ -18,6 +18,7 @@ $clr-very-dark-grayish-blue-3: hsl(237, 14%, 26%);
   --bar-clr: hsl(0, 0%, 98%);
   --check-border-clr: hsl(234, 39%, 85%);
   --text-clr: hsl(235, 21%, 11%);
+  --text-clr-light: hsl(234, 39%, 85%);
 }
 
 [data-theme="dark"] {
@@ -27,6 +28,7 @@ $clr-very-dark-grayish-blue-3: hsl(237, 14%, 26%);
   --bar-clr: hsl(235, 24%, 19%);
   --check-border-clr: hsl(234, 11%, 52%);
   --text-clr: hsl(0, 0%, 98%);
+  --text-clr-light: hsl(233, 14%, 35%);
 }
 
 :root {
