@@ -1,25 +1,25 @@
 import React, { useState } from "react"
 import { useSelector } from "react-redux"
 
-import { selectTodos } from "./todoSlice"
+import { selectTodos, selectTodoList } from "./todoSlice"
 
 import Todo from "./Todo"
 import "./TodoList.scss"
 
 const TodoList = () => {
   const todos = useSelector(selectTodos)
-  const [filterInd, setFilterInd] = useState(0)
+  const [group, setGroup] = useState("all")
 
   const handleOnClick = (ind) => {
-    setFilterInd(ind)
+    setGroup(ind)
   }
 
   const renderTodos = () => {
     return Object.keys(todos).map((id) => {
       let rules =
-        filterInd === 0
+        group === "all"
           ? true
-          : filterInd === 1
+          : group === "active"
           ? !todos[id].isCompleted
           : todos[id].isCompleted
 
@@ -49,25 +49,25 @@ const TodoList = () => {
           <ul className="todo-list__select-box">
             <li
               className={`todo-list__select ${
-                filterInd === 0 ? "todo-list__select--active" : ""
+                group === "all" ? "todo-list__select--active" : ""
               }`}
-              onClick={() => handleOnClick(0)}
+              onClick={() => handleOnClick("all")}
             >
               All
             </li>
             <li
               className={`todo-list__select ${
-                filterInd === 1 ? "todo-list__select--active" : ""
+                group === "active" ? "todo-list__select--active" : ""
               }`}
-              onClick={() => handleOnClick(1)}
+              onClick={() => handleOnClick("active")}
             >
               Active
             </li>
             <li
               className={`todo-list__select ${
-                filterInd === 2 ? "todo-list__select--active" : ""
+                group === "completed" ? "todo-list__select--active" : ""
               }`}
-              onClick={() => handleOnClick(2)}
+              onClick={() => handleOnClick("completed")}
             >
               Completed
             </li>

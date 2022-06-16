@@ -12,6 +12,7 @@ const initialState = {
   todos: {},
   isLoading: false,
   error: { isError: false, errMsg: "" },
+  todosOrder: [],
 }
 
 export const todoSlice = createSlice({
@@ -32,6 +33,15 @@ export const todoSlice = createSlice({
       .addCase(fetchTodos.fulfilled, (state, action) => {
         state.isLoading = false
         state.todos = _.keyBy(action.payload, "id")
+        state.todosOrder = action.payload.map((todo) => todo.id)
+      })
+      .addCase(createTodo.fulfilled, (state, action) => {
+        state.isLoading = false
+        state.todos = {
+          ...state.todos,
+          [action.payload.id]: action.payload,
+        }
+        state.todosOrder = [...state.todosOrder, action.payload.id]
       })
       .addMatcher(
         isAnyOf(
@@ -46,7 +56,7 @@ export const todoSlice = createSlice({
         }
       )
       .addMatcher(
-        isAnyOf(fetchTodo.fulfilled, createTodo.fulfilled, editTodo.fulfilled),
+        isAnyOf(fetchTodo.fulfilled, editTodo.fulfilled),
         (state, action) => {
           state.isLoading = false
           state.todos = {
@@ -76,6 +86,8 @@ export const todoSlice = createSlice({
 export const { clearTodoError } = todoSlice.actions
 
 export const selectTodos = (state) => state.todo.todos
+export const selectTodoList = (state) =>
+  Object.values(state.todo.todos).reduce((list, todo) => list.concat(todo), [])
 export const selectTodoError = (state) => state.todo.error
 
 export default todoSlice.reducer
