@@ -1,10 +1,10 @@
-import React from "react"
+import React, { forwardRef } from "react"
 
 import "./TaskBar.scss"
 
-const TaskBar = ({ children, isCompleted }) => {
+const TaskBar = forwardRef(({ children, isCompleted }, ref) => {
   return (
-    <div className="taskbar">
+    <div ref={ref} className="taskbar">
       <div className="taskbar__content">
         <span
           className="taskbar__check"
@@ -14,6 +14,6 @@ const TaskBar = ({ children, isCompleted }) => {
       </div>
     </div>
   )
-}
+})
 
 export default TaskBar

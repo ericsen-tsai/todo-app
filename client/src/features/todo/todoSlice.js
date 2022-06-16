@@ -1,5 +1,7 @@
 import { createSlice, isAnyOf } from "@reduxjs/toolkit"
 import _ from "lodash"
+import update from "immutability-helper"
+
 import {
   fetchTodo,
   fetchTodos,
@@ -23,12 +25,26 @@ export const todoSlice = createSlice({
       state.error.isError = false
       state.error.errMsg = ""
     },
+    changeTodosOrder: (state, action) => {
+      console.log(action)
+      const { dragInd, hoverInd } = action.payload
+      const dragId = state.todosOrder[dragInd]
+      state.todosOrder = update(state.todosOrder, {
+        $splice: [
+          [dragInd, 1],
+          [hoverInd, 0, dragId],
+        ],
+      })
+    },
   },
   extraReducers: (builder) => {
     builder
       .addCase(deleteTodo.fulfilled, (state, action) => {
         state.isLoading = false
         state.todos = _.omit(state.todos, action.payload.id)
+        state.todosOrder = state.todosOrder.filter(
+          (id) => id !== action.payload.id
+        )
       })
       .addCase(fetchTodos.fulfilled, (state, action) => {
         state.isLoading = false
@@ -83,11 +99,11 @@ export const todoSlice = createSlice({
   },
 })
 
-export const { clearTodoError } = todoSlice.actions
+export const { clearTodoError, changeTodosOrder } = todoSlice.actions
 
 export const selectTodos = (state) => state.todo.todos
-export const selectTodoList = (state) =>
-  Object.values(state.todo.todos).reduce((list, todo) => list.concat(todo), [])
+export const selectTodoListbyOrder = (state) =>
+  state.todo.todosOrder.map((id) => state.todo.todos[id])
 export const selectTodoError = (state) => state.todo.error
 
 export default todoSlice.reducer
