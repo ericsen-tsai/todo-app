@@ -1,32 +1,17 @@
 {
   "todos": [
     {
-      "id": 1,
-      "task": "Finish Frontend Mentor",
-      "isCompleted": false
-    },
-    {
-      "id": 2,
-      "task": "Get some rest",
-      "isCompleted": false
-    },
-    {
-      "task": "Exercising",
-      "isCompleted": true,
-      "id": 3
-    },
-    {
+      "isCompleted": false,
       "task": "Reading",
-      "isCompleted": true,
-      "id": 4
+      "id": 1
     },
     {
-      "task": "Chatting",
-      "isCompleted": true,
+      "isCompleted": false,
+      "task": "Hello",
       "id": 5
     }
   ],
   "theme": {
-    "mode": "light"
+    "mode": "dark"
   }
 }

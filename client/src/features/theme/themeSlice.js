@@ -3,7 +3,7 @@ import _ from "lodash"
 import { fetchTheme, toggleTheme } from "./themeService"
 
 const initialState = {
-  mode: "dark",
+  mode: null,
   isLoading: false,
   error: { isError: false, errMsg: "" },
 }

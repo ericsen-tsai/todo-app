@@ -29,3 +29,14 @@ export const deleteTodo = createAsyncThunk("todo/deleteTodo", async (data) => {
   await API.delete(`todos/${data.id}`, { headers })
   return { id: data.id }
 })
+
+export const deleteTodos = createAsyncThunk(
+  "todo/deleteTodos",
+  async (data) => {
+    const ids = data.ids
+    for (let i = 0; i < ids.length; i++) {
+      await API.delete(`todos/${ids[i]}`, { headers })
+    }
+    return { ids: ids }
+  }
+)

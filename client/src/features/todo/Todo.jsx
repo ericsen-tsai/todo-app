@@ -3,13 +3,14 @@ import { useDispatch } from "react-redux"
 import { useDrag, useDrop } from "react-dnd"
 
 import { changeTodosOrder } from "./todoSlice"
+import { editTodo, deleteTodo } from "./todoService"
 import TaskBar from "../../components/TaskBar"
 
 import DeleteIcon from "../../images/icon-cross.svg"
 
 const DND_ITEM_TYPE = "todo"
 
-const Todo = ({ isCompleted, task, index }) => {
+const Todo = ({ isCompleted, task, id, index }) => {
   const dispatch = useDispatch()
   const dropRef = useRef(null)
   const dragRef = useRef(null)
@@ -56,8 +57,22 @@ const Todo = ({ isCompleted, task, index }) => {
   preview(drop(dropRef))
   drag(dragRef)
 
+  const handleOnClick = () => {
+    dispatch(deleteTodo({ id: id }))
+  }
+
+  const toggleCompleted = () => {
+    console.log("toggle!!")
+    dispatch(editTodo({ id: id, isCompleted: !isCompleted }))
+  }
+
   return (
-    <TaskBar ref={dropRef} isCompleted={isCompleted} style={{ opacity }}>
+    <TaskBar
+      ref={dropRef}
+      isCompleted={isCompleted}
+      style={{ opacity }}
+      toggleCompleted={toggleCompleted}
+    >
       <div className="taskbar__flex">
         <p
           ref={dragRef}
@@ -67,7 +82,7 @@ const Todo = ({ isCompleted, task, index }) => {
         >
           {task}
         </p>
-        <svg className="taskbar__delete">
+        <svg className="taskbar__delete" onClick={handleOnClick}>
           <image xlinkHref={DeleteIcon}></image>
         </svg>
       </div>

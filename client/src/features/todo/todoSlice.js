@@ -8,6 +8,7 @@ import {
   createTodo,
   editTodo,
   deleteTodo,
+  deleteTodos,
 } from "./todoService"
 
 const initialState = {
@@ -46,6 +47,13 @@ export const todoSlice = createSlice({
           (id) => id !== action.payload.id
         )
       })
+      .addCase(deleteTodos.fulfilled, (state, action) => {
+        state.isLoading = false
+        state.todos = _.omit(state.todos, [...action.payload.ids])
+        state.todosOrder = state.todosOrder.filter(
+          (id) => !action.payload.ids.includes(id)
+        )
+      })
       .addCase(fetchTodos.fulfilled, (state, action) => {
         state.isLoading = false
         state.todos = _.keyBy(action.payload, "id")
@@ -65,7 +73,8 @@ export const todoSlice = createSlice({
           fetchTodos.pending,
           createTodo.pending,
           editTodo.pending,
-          deleteTodo.pending
+          deleteTodo.pending,
+          deleteTodos.pending
         ),
         (state) => {
           state.isLoading = true
@@ -87,7 +96,8 @@ export const todoSlice = createSlice({
           fetchTodos.rejected,
           createTodo.rejected,
           editTodo.rejected,
-          deleteTodo.rejected
+          deleteTodo.rejected,
+          deleteTodos.rejected
         ),
         (state, action) => {
           state.isLoading = false

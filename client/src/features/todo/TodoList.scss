@@ -35,6 +35,10 @@
     margin-left: 3rem;
   }
 
+  &__count {
+    transition: all ease 0.5s;
+  }
+
   &__select-box {
     display: flex;
     align-items: center;
@@ -52,6 +56,7 @@
   }
 
   &__select {
+    transition: all ease 0.5s;
     &--active {
       color: var(--clr-primary);
       cursor: default;
@@ -67,6 +72,7 @@
   }
 
   &__clear {
+    transition: all ease 0.5s;
     cursor: pointer;
 
     &:hover {

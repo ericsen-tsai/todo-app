@@ -1,8 +1,11 @@
 import React, { useState } from "react"
-import { useSelector } from "react-redux"
+import { useSelector, useDispatch } from "react-redux"
 import { DndProvider } from "react-dnd"
 import { HTML5Backend } from "react-dnd-html5-backend"
+import { motion } from "framer-motion"
+
 import { selectTodoListbyOrder } from "./todoSlice"
+import { deleteTodos } from "./todoService"
 
 import Todo from "./Todo"
 import "./TodoList.scss"
@@ -10,12 +13,21 @@ import "./TodoList.scss"
 const TodoList = () => {
   const todosWithOrder = useSelector(selectTodoListbyOrder)
   const [group, setGroup] = useState("all")
+  const dispatch = useDispatch()
 
   const handleOnClick = (ind) => {
     setGroup(ind)
   }
 
+  const handleClearCompletedTask = () => {
+    const todosIdIsCompleted = todosWithOrder
+      .filter((todo) => todo.isCompleted)
+      .map((todo) => todo.id)
+    dispatch(deleteTodos({ ids: todosIdIsCompleted }))
+  }
+
   const renderTodos = () => {
+    console.log(todosWithOrder)
     return todosWithOrder.map((todo, index) => {
       let rules =
         group === "all"
@@ -27,6 +39,7 @@ const TodoList = () => {
         rules && (
           <Todo
             key={todo.id}
+            id={todo.id}
             task={todo.task}
             isCompleted={todo.isCompleted}
             index={index}
@@ -40,7 +53,13 @@ const TodoList = () => {
     <DndProvider backend={HTML5Backend}>
       <div className="todo-list">
         {renderTodos()}
-        <div className="todo-list__info">
+        <motion.div
+          className="todo-list__info"
+          initial={{ scale: 0.8 }}
+          animate={{ scale: 1 }}
+          exit={{ scale: 0 }}
+          transition={{ duration: 0.2 }}
+        >
           <div className="todo-list__info-content">
             <div className="todo-list__count-box">
               <p className="todo-list__count">
@@ -75,10 +94,15 @@ const TodoList = () => {
               </li>
             </ul>
             <div className="todo-list__action-box">
-              <p className="todo-list__clear">Clear Completed</p>
+              <p
+                className="todo-list__clear"
+                onClick={handleClearCompletedTask}
+              >
+                Clear Completed
+              </p>
             </div>
           </div>
-        </div>
+        </motion.div>
       </div>
     </DndProvider>
   )
