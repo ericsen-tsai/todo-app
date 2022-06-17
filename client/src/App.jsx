@@ -36,7 +36,7 @@ function App() {
       ) : (
         <PulseLoader
           size={"2rem"}
-          css={{ margin: "0 auto" }}
+          css={{ margin: "0 auto", padding: "50vh" }}
           color="hsl(237, 14%, 26%)"
         />
       )}

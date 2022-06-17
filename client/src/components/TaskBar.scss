@@ -87,6 +87,11 @@
     font-weight: var(--font-weight-light);
     color: var(--text-clr);
     cursor: pointer;
+    transition: all 0.2s ease;
+
+    &:hover {
+      transform: scale(1.1);
+    }
 
     &--completed {
       color: var(--text-clr-light);
@@ -99,6 +104,11 @@
     height: 2rem;
     width: 2rem;
     cursor: pointer;
+    transition: all 0.2s ease;
+
+    &:hover {
+      transform: scale(1.1);
+    }
   }
 
   &__flex:hover &__delete {

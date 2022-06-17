@@ -2,16 +2,16 @@
   "todos": [
     {
       "isCompleted": false,
-      "task": "Reading",
+      "task": "Coding",
       "id": 1
     },
     {
       "isCompleted": false,
-      "task": "Hello",
-      "id": 5
+      "task": "Reading",
+      "id": 2
     }
   ],
   "theme": {
-    "mode": "dark"
+    "mode": "light"
   }
 }
